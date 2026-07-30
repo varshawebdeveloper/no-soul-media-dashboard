@@ -1,0 +1,124 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+}
+
+.brandHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.formTitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.error {
+  background: rgba(232, 35, 45, 0.1);
+  border: 1px solid var(--accent-secondary);
+  color: var(--accent-secondary);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.field label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.field input {
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.field input:focus {
+  border-color: var(--accent-primary);
+}
+
+.submitBtn {
+  width: 100%;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.footer {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.toggleBtn {
+  background: transparent;
+  border: none;
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.toggleBtn:hover {
+  text-decoration: underline;
+}

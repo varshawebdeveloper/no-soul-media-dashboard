@@ -1,0 +1,242 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--card-bg);
+  border-right: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+}
+
+.channelSelector {
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 24px;
+}
+
+.selectorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.selectorLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.addBtn {
+  background: transparent;
+  border: none;
+  color: var(--accent-primary);
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.addBtn:hover {
+  text-decoration: underline;
+}
+
+.select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.active {
+  background: rgba(242, 194, 48, 0.1);
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.userSection {
+  border-top: 1px solid var(--card-border);
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.userEmail {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userRole {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.logoutBtn:hover {
+  color: var(--accent-secondary);
+}
+
+.mainContent {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.modal h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.modalSub {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.modalInput {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancelBtn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+}
+
+.submitBtn {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border: none;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+}
+
+.error {
+  background: rgba(232, 35, 45, 0.1);
+  border: 1px solid var(--accent-secondary);
+  color: var(--accent-secondary);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
