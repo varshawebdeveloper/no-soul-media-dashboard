@@ -36,12 +36,15 @@ export const Login: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.brandHeader}>
-          <h1 className={styles.title}>NO SOUL</h1>
+          <div className={styles.logoBadge}>
+            <span className={styles.logoIcon}></span>
+            <h1 className={styles.title}>No Soul Media</h1>
+          </div>
           <p className={styles.subtitle}>CLIENT ANALYTICS PLATFORM</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
-          <h2 className={styles.formTitle}>{isRegister ? 'Create Account' : 'Sign In'}</h2>
+          <h2 className={styles.formTitle}>{isRegister ? 'REGISTER STAFF' : 'SIGN IN'}</h2>
           {errorMsg && <div className={styles.error}>{errorMsg}</div>}
 
           <div className={styles.field}>
@@ -67,14 +70,14 @@ export const Login: React.FC = () => {
           </div>
 
           <button type="submit" disabled={loading} className={styles.submitBtn}>
-            {loading ? 'Processing...' : isRegister ? 'Register' : 'Sign In'}
+            {loading ? 'PROCESSING...' : isRegister ? 'REGISTER ACCOUNT' : 'ENTER DASHBOARD'}
           </button>
         </form>
 
         <div className={styles.footer}>
           <span>{isRegister ? 'Already have an account?' : "Don't have an account?"}</span>
           <button onClick={() => setIsRegister(!isRegister)} className={styles.toggleBtn}>
-            {isRegister ? 'Sign In' : 'Register'}
+            {isRegister ? 'SIGN IN' : 'REGISTER'}
           </button>
         </div>
       </div>

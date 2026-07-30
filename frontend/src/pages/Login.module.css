@@ -5,48 +5,71 @@
   justify-content: center;
   background: var(--bg-primary);
   padding: 24px;
+  position: relative;
 }
 
 .card {
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: 40px;
+  border-radius: var(--radius-md);
+  padding: 44px 36px;
   box-shadow: var(--shadow-card);
 }
 
 .brandHeader {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
+}
+
+.logoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.logoIcon {
+  width: 24px;
+  height: 24px;
+  background: var(--accent-red);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+  display: inline-block;
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
+  display: inline-block;
 }
 
 .subtitle {
   font-size: 11px;
-  font-weight: 600;
-  color: var(--accent-primary);
-  letter-spacing: 0.1em;
-  margin-top: 4px;
+  font-weight: 700;
+  color: var(--accent-yellow);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 6px;
 }
 
 .formTitle {
   font-size: 18px;
-  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
   color: var(--text-primary);
+  border-left: 3px solid var(--accent-red);
+  padding-left: 10px;
 }
 
 .error {
   background: rgba(232, 35, 45, 0.1);
-  border: 1px solid var(--accent-secondary);
-  color: var(--accent-secondary);
+  border: 1px solid var(--accent-red);
+  color: var(--accent-red);
   padding: 12px;
   border-radius: var(--radius-sm);
   font-size: 13px;
@@ -62,16 +85,16 @@
 
 .field label {
   font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--accent-yellow);
+  letter-spacing: 0.1em;
 }
 
 .field input {
   background: var(--bg-primary);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
+  padding: 14px 16px;
   color: var(--text-primary);
   font-size: 14px;
   outline: none;
@@ -79,30 +102,31 @@
 }
 
 .field input:focus {
-  border-color: var(--accent-primary);
+  border-color: var(--accent-yellow);
 }
 
 .submitBtn {
   width: 100%;
-  background: var(--accent-primary);
-  color: var(--bg-primary);
+  background: var(--accent-red);
+  color: var(--text-primary);
   border: none;
-  padding: 14px;
+  padding: 16px;
   border-radius: var(--radius-sm);
   font-weight: 700;
   font-size: 14px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.1em;
   margin-top: 8px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(232, 35, 45, 0.4);
 }
 
 .submitBtn:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 35, 45, 0.6);
 }
 
 .footer {
-  margin-top: 24px;
+  margin-top: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,12 +137,17 @@
 
 .toggleBtn {
   background: transparent;
-  border: none;
-  color: var(--accent-primary);
-  font-weight: 600;
-  font-size: 13px;
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
 }
 
 .toggleBtn:hover {
-  text-decoration: underline;
+  background: var(--accent-yellow);
+  color: var(--bg-primary);
 }

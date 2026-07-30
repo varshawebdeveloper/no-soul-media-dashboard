@@ -1,21 +1,23 @@
 :root {
-  --bg-primary: #0A0A0A;
-  --card-bg: #141414;
-  --card-border: #2A2A2A;
-  --accent-primary: #F2C230;
-  --accent-secondary: #E8232D;
+  --bg-primary: #050505;
+  --card-bg: #0F0F0F;
+  --card-border: #1F1F1F;
+  --accent-yellow: #F2C230;
+  --accent-red: #E8232D;
+  --accent-primary: #E8232D;
+  --accent-secondary: #F2C230;
   --text-primary: #FFFFFF;
   --text-secondary: #A3A3A3;
   
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 12px 32px rgba(242, 194, 48, 0.08);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --shadow-hover: 0 12px 32px rgba(232, 35, 45, 0.15);
 }
 
 * {
@@ -35,10 +37,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 button {
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
 }
 

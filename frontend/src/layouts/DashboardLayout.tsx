@@ -37,7 +37,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       {/* Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.brand}>
-          <h2 className={styles.logoText}>NO SOUL</h2>
+          <span className={styles.logoIcon}></span>
+          <h2 className={styles.logoText}>No Soul Media</h2>
           <span className={styles.badge}>ANALYTICS</span>
         </div>
 
@@ -46,7 +47,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
           <div className={styles.selectorHeader}>
             <span className={styles.selectorLabel}>CHANNEL</span>
             <button className={styles.addBtn} onClick={() => setShowAddModal(true)}>
-              <Plus size={14} /> Add
+              <Plus size={14} /> ADD
             </button>
           </div>
 
@@ -107,7 +108,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
       {showAddModal && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
-            <h3>Add YouTube Channel</h3>
+            <h3>ADD YOUTUBE CHANNEL</h3>
             <p className={styles.modalSub}>Enter YouTube Channel Handle (@mkbhd), URL, or Channel ID.</p>
             {errorMsg && <div className={styles.error}>{errorMsg}</div>}
             <form onSubmit={handleAddSubmit}>
@@ -121,10 +122,10 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
               />
               <div className={styles.modalActions}>
                 <button type="button" onClick={() => setShowAddModal(false)} className={styles.cancelBtn}>
-                  Cancel
+                  CANCEL
                 </button>
                 <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
-                  {isSubmitting ? 'Fetching Stats...' : 'Add Channel'}
+                  {isSubmitting ? 'FETCHING...' : 'ADD CHANNEL'}
                 </button>
               </div>
             </form>
