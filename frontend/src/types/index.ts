@@ -31,6 +31,16 @@ export interface VideoItem {
   duration?: string;
 }
 
+export interface DailySnapshot {
+  date: string;
+  views: number;
+  likes: number;
+  comments: number;
+  subscribersGained: number;
+  watchTimeMinutes: number;
+  source: 'data_api_v3' | 'analytics_api';
+}
+
 export interface ChannelStats {
   channel: Channel;
   totalViews: number;
@@ -41,4 +51,12 @@ export interface ChannelStats {
   engagementRate: number;
   topVideos: VideoItem[];
   recentVideos: VideoItem[];
+  historicalDaily?: DailySnapshot[];
+  watchTimeMinutes?: number;
+  comparePreviousPeriod?: {
+    viewsChangePercent: number;
+    likesChangePercent: number;
+    commentsChangePercent: number;
+    subscribersChangePercent: number;
+  };
 }

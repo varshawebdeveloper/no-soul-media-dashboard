@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { google } from 'googleapis';
 import { config } from '../config/index.js';
-import { VideoItem } from '../types/index.js';
+import { VideoItem, DailySnapshot } from '../types/index.js';
 
 const YOUTUBE_BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
@@ -40,6 +41,87 @@ export class YouTubeService {
   }
 
   /**
+   * OAuth 2.0 Auth URL Generator
+   */
+  getOAuthUrl(state?: string): string {
+    const oauth2Client = new google.auth.OAuth2(
+      config.googleOAuthClientId,
+      config.googleOAuthClientSecret,
+      config.googleOAuthRedirectUri
+    );
+
+    const scopes = [
+      'https://www.googleapis.com/auth/youtube.readonly',
+      'https://www.googleapis.com/auth/yt-analytics.readonly',
+    ];
+
+    return oauth2Client.generateAuthUrl({
+      access_type: 'offline',
+      scope: scopes,
+      prompt: 'consent',
+      state,
+    });
+  }
+
+  /**
+   * Exchange Auth Code for Access & Refresh Tokens
+   */
+  async getTokensFromCode(code: string) {
+    const oauth2Client = new google.auth.OAuth2(
+      config.googleOAuthClientId,
+      config.googleOAuthClientSecret,
+      config.googleOAuthRedirectUri
+    );
+    const { tokens } = await oauth2Client.getToken(code);
+    return tokens;
+  }
+
+  /**
+   * Fetch Daily Analytics using YouTube Analytics API (Phase 2)
+   */
+  async fetchDailyAnalytics(
+    accessToken: string,
+    channelId: string,
+    startDate: string,
+    endDate: string
+  ): Promise<DailySnapshot[]> {
+    const cacheKey = `dailyAnalytics:${channelId}:${startDate}:${endDate}`;
+    const cached = this.getCached<DailySnapshot[]>(cacheKey);
+    if (cached) return cached;
+
+    const oauth2Client = new google.auth.OAuth2();
+    oauth2Client.setCredentials({ access_token: accessToken });
+
+    const youtubeAnalytics = google.youtubeAnalytics({
+      version: 'v2',
+      auth: oauth2Client,
+    });
+
+    const response = await youtubeAnalytics.reports.query({
+      ids: `channel==${channelId}`,
+      startDate,
+      endDate,
+      metrics: 'views,likes,comments,subscribersGained,estimatedMinutesWatched',
+      dimensions: 'day',
+      sort: 'day',
+    });
+
+    const rows = response.data.rows || [];
+    const snapshots: DailySnapshot[] = rows.map((row: any) => ({
+      date: row[0],
+      views: Number(row[1] || 0),
+      likes: Number(row[2] || 0),
+      comments: Number(row[3] || 0),
+      subscribersGained: Number(row[4] || 0),
+      watchTimeMinutes: Number(row[5] || 0),
+      source: 'analytics_api',
+    }));
+
+    this.setCache(cacheKey, snapshots);
+    return snapshots;
+  }
+
+  /**
    * Resolves channel ID from handle (@handle), custom URL, or returns ID directly
    */
   async resolveChannelId(input: string): Promise<string> {
@@ -60,7 +142,6 @@ export class YouTubeService {
       return cleanInput.replace('channel/', '');
     }
 
-    // Direct Channel ID check (UC...)
     if (cleanInput.startsWith('UC') && cleanInput.length === 24) {
       return cleanInput;
     }
@@ -74,7 +155,6 @@ export class YouTubeService {
     }
 
     return this.executeWithRetry(async () => {
-      // Try by handle first
       try {
         const handleRes = await axios.get(`${YOUTUBE_BASE_URL}/channels`, {
           params: {
@@ -89,10 +169,9 @@ export class YouTubeService {
           return id;
         }
       } catch (err) {
-        // Fallback to search
+        // Fallback
       }
 
-      // Fallback to search query
       const searchRes = await axios.get(`${YOUTUBE_BASE_URL}/search`, {
         params: {
           part: 'id',
